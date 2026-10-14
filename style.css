@@ -1,0 +1,778 @@
+:root {
+  --green: #397956;
+  --deep-green: #234d39;
+  --soft-green: #e4f4e4;
+  --mint: #f5fff4;
+  --sky: #75b5df;
+  --white: #ffffff;
+  --text: #355747;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 20px;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: linear-gradient(
+    180deg,
+    #6da8d0 0%,
+    #b4d8ec 35%,
+    #e5f5ee 65%,
+    #f5fff4 100%
+  );
+}
+
+/* Dreamy sky background */
+
+.sky {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 50% 22%, #fff0c8 0%, transparent 22%),
+    radial-gradient(ellipse at 15% 20%, #ffffffad 0%, transparent 26%),
+    radial-gradient(ellipse at 90% 35%, #ffffffa6 0%, transparent 24%),
+    linear-gradient(180deg, #4e8bb8, #9bc9e3 50%, #e8f7eb);
+}
+
+/* Soft cloud shapes */
+
+.cloud {
+  position: fixed;
+  z-index: -2;
+  pointer-events: none;
+  opacity: 0.8;
+  filter: blur(18px);
+  background:
+    radial-gradient(ellipse at 20% 60%, #fff 0 16%, transparent 18%),
+    radial-gradient(ellipse at 40% 40%, #fff 0 25%, transparent 27%),
+    radial-gradient(ellipse at 63% 45%, #fff8e8 0 25%, transparent 27%),
+    radial-gradient(ellipse at 80% 65%, #fff 0 20%, transparent 22%),
+    radial-gradient(ellipse at 50% 75%, #fff 0 28%, transparent 30%);
+}
+
+.cloud-left {
+  width: 400px;
+  height: 330px;
+  top: -70px;
+  left: -170px;
+}
+
+.cloud-right {
+  width: 450px;
+  height: 340px;
+  right: -200px;
+  top: 90px;
+}
+
+.cloud-bottom {
+  width: 600px;
+  height: 260px;
+  left: 50%;
+  bottom: -130px;
+  transform: translateX(-50%);
+}
+
+/* Main layout */
+
+.page {
+  width: 100%;
+  max-width: 850px;
+  padding: 32px 20px 45px;
+  margin: auto;
+  position: relative;
+}
+
+.hero {
+  text-align: center;
+  min-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0 45px;
+}
+
+.eyebrow {
+  color: white;
+  letter-spacing: 3px;
+  font-size: 11px;
+  font-weight: 800;
+  text-shadow: 0 2px 12px #204a6560;
+}
+
+/* Heart-shaped sky illustration */
+
+.heart-sky {
+  position: relative;
+  width: min(100%, 520px);
+  height: 310px;
+  margin: 22px auto 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;
+}
+
+.sky-heart {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  background: linear-gradient(145deg, #b5e2fa 0%, #77b9e4 55%, #5e9dcf 100%);
+  transform: rotate(-45deg);
+  border-radius: 8px;
+  box-shadow:
+    0 0 35px #ffffff5c,
+    inset 0 0 28px #ffffff29;
+  z-index: -1;
+}
+
+.sky-heart::before,
+.sky-heart::after {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: inherit;
+}
+
+.sky-heart::before {
+  top: -110px;
+  left: 0;
+}
+
+.sky-heart::after {
+  top: 0;
+  right: -110px;
+}
+
+/* Soft cloud border around the heart */
+
+.heart-sky::before {
+  content: "";
+  position: absolute;
+  inset: 9px 30px;
+  z-index: -1;
+  border-radius: 45%;
+  background:
+    radial-gradient(circle at 15% 30%, #fff 0 9%, transparent 11%),
+    radial-gradient(circle at 28% 12%, #fff7e7 0 11%, transparent 13%),
+    radial-gradient(circle at 48% 8%, #fff 0 10%, transparent 12%),
+    radial-gradient(circle at 68% 15%, #fff8eb 0 11%, transparent 13%),
+    radial-gradient(circle at 85% 30%, #fff 0 10%, transparent 12%),
+    radial-gradient(circle at 88% 52%, #fff 0 10%, transparent 12%),
+    radial-gradient(circle at 80% 75%, #fff8eb 0 11%, transparent 13%),
+    radial-gradient(circle at 64% 88%, #fff 0 11%, transparent 13%),
+    radial-gradient(circle at 46% 91%, #fff9ee 0 10%, transparent 12%),
+    radial-gradient(circle at 27% 82%, #fff 0 11%, transparent 13%),
+    radial-gradient(circle at 12% 62%, #fff8eb 0 11%, transparent 13%);
+  filter: blur(7px);
+  opacity: 0.9;
+  animation: cloudGlow 5s ease-in-out infinite alternate;
+}
+
+.heart-sky h1 {
+  color: white;
+  font-family: "Pacifico", cursive;
+  font-size: clamp(76px, 17vw, 125px);
+  font-weight: 400;
+  line-height: 1;
+  transform: rotate(-9deg);
+  text-shadow:
+    0 0 5px #fff,
+    0 0 15px #fff,
+    0 0 28px #ffffffbd,
+    0 4px 10px #356d9950;
+  animation: loveGlow 3s ease-in-out infinite;
+}
+
+.tiny-spark {
+  position: absolute;
+  color: white;
+  text-shadow: 0 0 12px white;
+  font-size: 27px;
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+.spark-one {
+  top: 40px;
+  left: 20%;
+}
+
+.spark-two {
+  bottom: 50px;
+  right: 17%;
+  font-size: 32px;
+}
+
+.spark-three {
+  top: 30px;
+  right: 27%;
+  animation-delay: 0.7s;
+}
+
+.hero-caption {
+  color: white;
+  font-family: "Caveat", cursive;
+  font-size: 24px;
+  text-shadow: 0 2px 8px #28567470;
+  margin: 10px 0 30px;
+}
+
+.greeting {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.greeting h2 {
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  color: white;
+  font-size: clamp(23px, 5vw, 35px);
+  text-shadow: 0 2px 15px #26577975;
+}
+
+.greeting span {
+  font-size: 23px;
+}
+
+.date-note {
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.8;
+  max-width: 440px;
+  margin: 13px 0 24px;
+  text-shadow: 0 1px 8px #214e6a80;
+}
+
+/* Buttons */
+
+button {
+  font-family: "Nunito", sans-serif;
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-3px);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 4px;
+}
+
+.scroll-button {
+  padding: 14px 23px;
+  border-radius: 30px;
+  color: var(--deep-green);
+  font-weight: 800;
+  font-size: 13px;
+  background: #f3fff0;
+  box-shadow: 0 8px 25px #164d4b35;
+}
+
+.scroll-button:hover {
+  box-shadow: 0 12px 30px #164d4b50;
+}
+
+/* Love letter card */
+
+.letter {
+  background: #fffffff0;
+  border: 1px solid #ffffff;
+  border-radius: 28px;
+  padding: clamp(23px, 5vw, 44px);
+  margin: 0 auto 24px;
+  box-shadow: 0 18px 55px #234d3920;
+  line-height: 1.95;
+  font-size: 15px;
+  scroll-margin-top: 18px;
+}
+
+.letter-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  color: var(--green);
+  letter-spacing: 2px;
+  font-size: 10px;
+  font-weight: 800;
+  margin-bottom: 22px;
+}
+
+.letter h2,
+.surprises h2,
+.final-card h2 {
+  color: var(--deep-green);
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.letter h2 {
+  font-size: clamp(26px, 5vw, 36px);
+  margin-bottom: 17px;
+}
+
+.letter p {
+  margin-bottom: 19px;
+}
+
+.letter .opening {
+  color: var(--green);
+  font-weight: 800;
+  font-size: 17px;
+}
+
+.letter .highlight {
+  background: linear-gradient(120deg, #e4f7e4, #edf9ff);
+  border-left: 4px solid #75ad81;
+  padding: 18px;
+  border-radius: 0 15px 15px 0;
+}
+
+.highlight strong {
+  color: #26764a;
+}
+
+.letter .last-line {
+  color: var(--deep-green);
+  font-weight: 700;
+}
+
+.signature {
+  text-align: right;
+  color: #668d72;
+  margin-top: 28px;
+  font-size: 14px;
+}
+
+.signature span {
+  display: block;
+  color: var(--green);
+  font-family: "Pacifico", cursive;
+  font-size: 24px;
+  margin-top: 5px;
+}
+
+/* Bible verse */
+
+.verse-card {
+  background: #eaf8e9ee;
+  border: 1px solid #c8e8ca;
+  border-radius: 25px;
+  padding: 30px 25px;
+  margin-bottom: 50px;
+  text-align: center;
+  box-shadow: 0 12px 35px #234d3912;
+}
+
+.verse-icon {
+  font-size: 34px;
+}
+
+.verse-label {
+  color: #668a6d;
+  letter-spacing: 2px;
+  font-weight: 800;
+  font-size: 10px;
+  margin: 12px 0;
+}
+
+.verse-card blockquote {
+  color: var(--deep-green);
+  font-family: "Caveat", cursive;
+  font-size: clamp(25px, 5vw, 34px);
+  line-height: 1.45;
+  max-width: 560px;
+  margin: auto;
+}
+
+.verse-reference {
+  color: var(--green);
+  font-weight: 800;
+  font-size: 13px;
+  margin: 12px 0;
+}
+
+.verse-note {
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* Interactive surprises */
+
+.surprises {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.surprises h2 {
+  font-size: clamp(24px, 5vw, 34px);
+}
+
+.surprise-intro {
+  margin: 10px 0 24px;
+  color: #51745f;
+  font-size: 13px;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.surprise-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 23px 12px;
+  border-radius: 20px;
+  background: #ffffffed;
+  color: var(--deep-green);
+  border: 1px solid #d5ecd5;
+  box-shadow: 0 8px 25px #234d3912;
+}
+
+.surprise-button span {
+  font-size: 31px;
+}
+
+.surprise-button strong {
+  font-size: 13px;
+}
+
+.surprise-button:hover {
+  background: #f0fff0;
+  box-shadow: 0 12px 28px #234d3920;
+}
+
+.surprise-message {
+  display: none;
+  background: #fffffff2;
+  border: 2px dashed #a8d4ab;
+  border-radius: 23px;
+  padding: 24px;
+  margin-top: 20px;
+  line-height: 1.9;
+  box-shadow: 0 8px 25px #234d3912;
+}
+
+.surprise-message.show {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+
+#surpriseEmoji {
+  font-size: 38px;
+  margin-bottom: 10px;
+}
+
+#surpriseText {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--deep-green);
+}
+
+/* Final hug */
+
+.final-card {
+  text-align: center;
+  padding: 35px 25px;
+  border-radius: 28px;
+  background: linear-gradient(145deg, #e5f8e4, #f9fff6);
+  border: 1px solid white;
+  box-shadow: 0 15px 40px #234d3915;
+}
+
+.final-heart {
+  font-size: 45px;
+  animation: heartbeat 1.8s ease-in-out infinite;
+}
+
+.final-card h2 {
+  font-size: 29px;
+  margin: 10px 0;
+}
+
+.final-card > p {
+  max-width: 490px;
+  margin: 0 auto 20px;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+#hugMeButton {
+  color: white;
+  background: linear-gradient(135deg, #4b9564, #286b47);
+  padding: 14px 22px;
+  border-radius: 30px;
+  font-weight: 800;
+  font-size: 13px;
+  box-shadow: 0 7px 18px #286b4730;
+}
+
+.final-card .hug-result {
+  color: var(--green);
+  font-weight: 800;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+/* Footer */
+
+footer {
+  padding: 35px 0 10px;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 1px 8px #234d3960;
+  line-height: 2;
+  font-size: 13px;
+}
+
+footer small {
+  font-size: 11px;
+}
+
+/* Floating hearts and nature symbols */
+
+.floating-layer {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.float-item {
+  position: absolute;
+  bottom: -45px;
+  animation: floatUp linear forwards;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 0.85;
+  }
+
+  85% {
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translateY(-115vh) rotate(35deg);
+    opacity: 0;
+  }
+}
+
+@keyframes loveGlow {
+  0%,
+  100% {
+    text-shadow:
+      0 0 5px #fff,
+      0 0 15px #fff,
+      0 0 28px #ffffffbd;
+  }
+
+  50% {
+    text-shadow:
+      0 0 8px #fff,
+      0 0 25px #fff,
+      0 0 45px #ffffff;
+  }
+}
+
+@keyframes cloudGlow {
+  from {
+    opacity: 0.65;
+    transform: scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.85);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  15% {
+    transform: scale(1.13);
+  }
+
+  30% {
+    transform: scale(1);
+  }
+
+  45% {
+    transform: scale(1.09);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile-friendly layout */
+
+@media (max-width: 520px) {
+  .page {
+    padding: 23px 13px 30px;
+  }
+
+  .hero {
+    min-height: 82vh;
+    padding-top: 10px;
+  }
+
+  .heart-sky {
+    height: 255px;
+    margin-top: 20px;
+  }
+
+  .sky-heart {
+    width: 155px;
+    height: 155px;
+  }
+
+  .sky-heart::before,
+  .sky-heart::after {
+    width: 155px;
+    height: 155px;
+  }
+
+  .sky-heart::before {
+    top: -77px;
+  }
+
+  .sky-heart::after {
+    right: -77px;
+  }
+
+  .heart-sky::before {
+    inset: 15px 4px;
+  }
+
+  .spark-one {
+    left: 12%;
+    top: 25px;
+  }
+
+  .spark-two {
+    right: 9%;
+    bottom: 32px;
+  }
+
+  .spark-three {
+    right: 20%;
+    top: 18px;
+  }
+
+  .hero-caption {
+    font-size: 21px;
+  }
+
+  .letter {
+    padding: 23px 19px;
+    font-size: 14px;
+    line-height: 1.9;
+  }
+
+  .letter-top {
+    gap: 6px;
+    letter-spacing: 1px;
+    font-size: 9px;
+  }
+
+  .button-grid {
+    gap: 10px;
+  }
+
+  .surprise-button {
+    min-height: 115px;
+    padding: 17px 8px;
+  }
+
+  .surprise-button strong {
+    font-size: 12px;
+  }
+
+  .verse-card {
+    padding: 26px 18px;
+  }
+
+  .final-card {
+    padding: 30px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
